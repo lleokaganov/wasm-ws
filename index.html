@@ -1,0 +1,55 @@
+<html><head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <link href='/rustcode/wasm-ws/main.css' rel='stylesheet' type='text/css' />
+
+    <script type="module">
+	import init, {greet, do_plays, do_resolutions, do_progress, btc, toclip, dodo, ws_event} from '/rustcode/wasm-ws/wasm.js';
+        async function run() { await init('/rustcode/wasm-ws/wasm.wasm'); }
+        run();
+	window.greet=greet;
+	window.do_plays=do_plays;
+        window.do_resolutions=do_resolutions;
+        window.do_progress=do_progress;
+        window.btc=btc;
+        window.toclip=toclip;
+
+        window.dodo=dodo;
+        window.ws_event=ws_event;
+    </script>
+
+    <script type='text/javascript' language='JavaScript' src='/rustcode/wasm-ws/main.js'></script>
+
+
+<style>
+#ram {
+    font-size:10px;
+    position:absolute;
+    top:10px;
+    right:10px;'
+    border: 1px solid #ccc;
+    box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.6);
+    border-radius: 3px 3px 3px 3px;
+    padding: 15px 15px 15px 15px;
+}
+</style>
+
+</head><body style='padding:30px'>
+<div id='globals' style='display:none'></div>
+
+<h2>RUST/JS Bridge ///DATA///</h2>
+
+<input type='text' size='30' id='mytext' value='test'> <input type='button' value='GREET' onclick="greet(idd('mytext').value)">
+ <input type='button' value='Clipboard' onclick="toclip(idd('mytext').value)">
+<p><input type='button' value='play sound' onclick='do_plays()'>
+ &nbsp; <input type='button' value='resolutions' onclick='do_resolutions()'>
+ &nbsp; <input type='button' value='progress' onclick='do_progress()'>
+ &nbsp; <input type='button' value='Bitcoin' onclick='btc()'>
+
+ &nbsp; <input type='button' value='dodo' style='padding:30px' onclick='dodo()'>
+<!--  &nbsp; <input type='button' value='ws_send' style='padding:30px' onclick="ws_send(idd('mytext').value)"> -->
+
+
+<div id='BTC'></div>
+<div id='ram' style='display:none'></div>
+
+</body></html>
