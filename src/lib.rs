@@ -43,11 +43,13 @@ pub fn ws_event(mode: &str,text: &str) {
 	match id {
 
 	    1 => { // genesis_hash
-		set("genesis_hash", v["result"].as_str().unwrap_or("")); ram();
+		set("genesis_hash", v["result"].as_str().unwrap_or(""));
+		ram();
 	    },
 
 	    2 => { // block_hash
-		set("block_hash", v["result"].as_str().unwrap_or("")); ram();
+		set("block_hash", v["result"].as_str().unwrap_or(""));
+		ram();
 	    },
 
 	    3 => { // specVersion & transactionVersion
