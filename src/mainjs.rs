@@ -3,10 +3,13 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern {
+    
+    pub fn ajaxon();
+    pub fn ajaxoff();
+
     // websocket
     pub fn ws_open(url: &str);
     pub fn ws_send(text: &str) -> bool;
-    pub fn ws_close();
 
     // do alert(s)
     pub fn alert(text: &str);

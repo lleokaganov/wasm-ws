@@ -766,7 +766,7 @@ function ws_open(url) {
     if(ws) return;
     ws = new WebSocket(url);
     ws.onopen = function(e) { wsopen=true; for(var data of wsdata) ws_send(data); };
-    ws.onmessage = function(event) { ws_event("get",event.data); }
+    ws.onmessage = function(event) { ws_event0("get",event.data); }
     ws.onclose = function(event) {
 	ws_event("close", (event.wasClean ? "#"+event.code+" "+event.reason : "disconnect") );
 	ws_close();
@@ -774,6 +774,17 @@ function ws_open(url) {
     ws.onerror = function(error) { ws_event("error",error); ws_close(); }
 };
 
-function ws_event(mode,text) { dier("<b>ws_event: "+mode+"</b><br>"+text); }
+// function ws_event(mode,text) { dier("<b>ws_event: "+mode+"</b><br>"+text); }
+function ws_event0(mode,text) {
+//    dier("<b>ws_event: "+mode+"</b><br>"+text);
+    ws_event(mode,text);
+}
 
 function ws_close() { if(ws) ws.close(); ws=false; wsopen=false; wsdata=[]; }
+
+function ajaxon(){
+    var id='ajaxgif';
+    newdiv("<img src='http://q.lleo.me/design/img/ajax.gif'>",{id:id,cls:''});
+    posdiv(id,15+mouse_x,15+mouse_y);
+}
+function ajaxoff(){ clean('ajaxgif'); }
